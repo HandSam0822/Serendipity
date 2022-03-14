@@ -1,0 +1,19 @@
+移除沒有使用的package
+https://dev.to/manitej/remove-unused-npm-modules-in-less-than-30-seconds-4g8k
+npm install -g depcheck
+
+npx depcheck | sed '/Missing/q' | grep '\*' | cut -c 3- | while read my_package; do
+  npm uninstall "$my_package"
+done
+
+
+如何部署react project於heroku上(後來因為超過1GB而沒能放在heroku上)
+https://github.com/mars/create-react-app-buildpack
+
+
+相關的code 參考
+- https://github.com/koolguru/Spotify-Search-Bar/blob/master/src/App.js
+- https://www.youtube.com/watch?v=SbelQW2JaDQ
+
+Spotify API的token來自
+- https://developer.spotify.com/dashboard/login

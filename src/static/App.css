@@ -1,0 +1,31 @@
+.track-name {
+    font-size: 1.2rem
+}
+.track-artist {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #999999;
+}
+
+.track-album {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #999999;
+}
+.body {
+  margin: auto;
+  width: 80%;
+  border: 3px;
+  padding: 10% 0px;
+  
+}
+
+a {
+  text-decoration: none;  
+  color: black
+}
+
+a:hover {
+  text-decoration: underline;
+  color: black
+}

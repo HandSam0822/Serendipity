@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/song-recommend-search-engine/static/css/main.560e6712.css",
+    "main.js": "/song-recommend-search-engine/static/js/main.aba01873.js",
+    "index.html": "/song-recommend-search-engine/index.html",
+    "main.560e6712.css.map": "/song-recommend-search-engine/static/css/main.560e6712.css.map",
+    "main.aba01873.js.map": "/song-recommend-search-engine/static/js/main.aba01873.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.560e6712.css",
+    "static/js/main.aba01873.js"
+  ]
+}
