@@ -12,12 +12,12 @@
   font-weight: 400;
   color: #999999;
 }
+
 .body {
   margin: auto;
   width: 80%;
   border: 3px;
   padding: 10% 0px;
-  
 }
 
 a {
@@ -28,4 +28,9 @@ a {
 a:hover {
   text-decoration: underline;
   color: black
+}
+
+.playButton {
+  font-size: 20px;
+  color: #08c;
 }

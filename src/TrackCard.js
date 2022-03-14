@@ -1,6 +1,11 @@
 import React from 'react'
 import {List, Avatar} from 'antd';
 
+/**
+ * TrackCard is List.Item that would be fed in List
+ * @param {props} props proprty of TrackCard
+ * @returns {List.Item} 
+ */
 const TrackCard = (props) => {
     let artists = []    
     props.track.artists.forEach(artist => artists.push(artist.name))

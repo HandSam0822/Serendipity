@@ -1,22 +1,38 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import {Card, Input, List, Select} from 'antd';
 import TrackCard from './TrackCard';
 import 'antd/dist/antd.css';
 import "./static/App.css";
 import {getRecommendSongs, getSearchResults} from './APIController';
 
+// Search bar in antd
 const { Search } = Input;
+
+// Drop down Select in antd
 const { Option } = Select;
 
 const SearchBar = (props) => {    
+    // track name shown on search bar
     const [track, setTrack] = useState("")
-    const [recommendNumber, setRecommendNumber] = useState(3)    
+    
+    // number of song recommendation. It is set to 3 by default
+    const [recommendNumber, setRecommendNumber] = useState(3)  
+
+    // the uri is to be sent to getRecommendSongs. 
+    // If client didn't click track card to search result, even if the song is valid to
+    // be searched, no response would be sent back. (Small bug)
     const [uri, setURI] = useState("")    
+    
+    // card is initially null so no trackcard are shown in browser
     const [card, setCard] = useState(null)
     
-    // 後端會接收到最重要的兩個東西1. track(string) 2. recommendNumber(int)
-    // 接著丟進sp跑結果，回傳a list of json object, 再丟給display table render結果
+    /**
+     * When handelSubmit is triggered, it would send data to getRecommendSongs, 
+     * receive response data, and change table value based on the response. 
+     * Although this part should to be done in backend, 
+     * the project scale is small enough to simply implement in front end. 
+     */
     const handelSubmit = async() => {     
         const result = await getRecommendSongs(props.token, uri, recommendNumber);            
         props.changeTableValue(result);
@@ -25,21 +41,37 @@ const SearchBar = (props) => {
         setCard(null)          
     }
     
+    /**
+     * When one of the track in TrackCard is clicked, the global variable is updated
+     * @param {*} trackInfo TrackCard that is clicked
+     */
     function clickTrack(trackInfo) {                  
         setTrack(trackInfo.name)
         setURI(trackInfo.uri)
         setCard(null)
     }
 
-    const setOnSearch = async(e) => {
-        console.log(e);
-        setTrack(e.target.value);
-        const tracks = await getSearchResults(props.token, e.target.value);                
+    /**
+     * When users type something on Searchbar, setOnSearch is triggered, 
+     * track info would be set, Spotify API is fetched, 
+     * response is returned, TrackCard is updated.
+     * @param {event} event clicked component
+     */
+    const setOnSearch = async(event) => {
+        setTrack(event.target.value);
+        const tracks = await getSearchResults(props.token, event.target.value);                
         const results = [];
         tracks.forEach(track => {              
             results.push(<TrackCard key={track.uri} track = {track} click={clickTrack} />)
-        });                                                    
-        setCard(<Card><List itemLayout="horizontal">{results}</List></Card>)      
+        });           
+        // set card as a list of result where result is an array of TrackCard
+        setCard(
+        <Card>
+            <List itemLayout="horizontal">
+                {results}
+            </List>
+        </Card>
+        )
     }
 
     return (
