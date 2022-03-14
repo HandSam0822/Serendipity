@@ -17,3 +17,6 @@ https://github.com/mars/create-react-app-buildpack
 
 Spotify API的token來自
 - https://developer.spotify.com/dashboard/login
+
+觀察到只有node_modules的.cache超過100MB(107MB), 所以單純把那個拿掉後就可以全部上傳了，但是記得提醒git clone下來的人，要去spotify註冊client id和secret並丟到.env裡才能work
+

@@ -4,9 +4,6 @@
 var clientId = process.env.REACT_APP_AP_CLIENT_ID; 
 var clientSecret = process.env.REACT_APP_AP_CLIENT_SECRET;
 
-// var clientId = 'cb5340d07ad24300bbb4dc642976d3ef'; 
-// var clientSecret = '5cbdc2c5345b432b9c4b3e5c475db986'
-
 
 const getToken = async () => {    
     const result = await fetch('https://accounts.spotify.com/api/token', {
